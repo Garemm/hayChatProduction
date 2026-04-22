@@ -1536,6 +1536,11 @@ async function executeDecision(decision, originalText, normalizedText, businessI
               ` También ofrecemos ${svcListed}${more}. ¿Te gustaría saber más sobre alguno?`;
           }
         } catch { /* services are optional */ }
+        // Attach google maps link as metadata so frontend can render a hidden
+        // hyperlink with the label "ubicación" instead of showing the raw URL.
+        if (data?.google_maps_url) {
+          decision._replyMeta = { links: [{ text: 'Abrir ubicación', url: data.google_maps_url }] };
+        }
       }
 
       return intentResponse;

@@ -23,6 +23,7 @@ const router = Router();
 // ── Auth (public) ─────────────────────────────────────────────────────────────
 router.post('/login',           authController.login);
 router.post('/register',        registerController.register);
+router.get('/check-username',   registerController.checkUsername);
 router.post('/forgot-password', authController.forgotPassword);
 router.post('/reset-password',  authController.resetPassword);// Refresh + logout use the HTTP-only cookie — no access token needed
 router.post('/refresh',         authController.refreshToken);

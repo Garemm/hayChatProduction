@@ -87,3 +87,17 @@ const register = async (req, res, next) => {
 };
 
 export { register };
+
+const checkUsername = async (req, res, next) => {
+  try {
+    const username = String(req.query.username || '').trim();
+    if (!username) return res.status(400).json({ success: false, message: 'username requerido' });
+
+    const existing = await AdminModel.findByUsername(username);
+    return res.json({ success: true, data: { available: !existing } });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export { checkUsername };

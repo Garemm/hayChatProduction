@@ -1,6 +1,12 @@
 // ── Admin Backend — Entry Point ────────────────────────────────────────────
 // Starts the Express server. All route/middleware wiring lives in src/app.js.
-import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config({ path: './.env' }); // Ajusta la ruta si tu .env está en otro lugar
+console.log('[DEBUG] .env loaded:', {
+  DB_HOST: process.env.DB_HOST,
+  JWT_SECRET: process.env.JWT_SECRET,
+  JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET
+});
 import http from 'http';
 import { Server } from 'socket.io';
 import app from './src/app.js';

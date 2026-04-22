@@ -27,6 +27,9 @@ function buildPermissions(row) {
  * Returns { id, username, business_id } on success, throws on failure.
  */
 async function login(username, password) {
+  console.log("DB HOST:", process.env.DB_HOST);
+console.log("DB USER:", process.env.DB_USER);
+console.log("DB PASSWORD:", process.env.DB_PASSWORD);
   const admin = await AdminModel.findByUsernameForAuth(username);
   if (!admin) throw new Error('Credenciales incorrectas');
 

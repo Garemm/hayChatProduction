@@ -1,3 +1,13 @@
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({
+  path: path.join(__dirname, '../../.env')
+});
 // ── Database config (shared pg pool pointing to same DB as chat backend) ───
 import { Pool } from 'pg';
 
